@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import Phone from "../Phone/Phone";
 import Header from "../Header/Header";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const Phones = () => {
+const Phones = ({setLoading}) => {
     const [phones, setPhones] = useState([])
     const [shop, setShop] = useState([])
     const [total, setTotal] = useState(0)
     useEffect(()=>{
+        setLoading('flex');
         axios.get('https://fakestoreapi.com/products')
-        .then(data => setPhones(data.data))
+        .then(data => setPhones(data.data));
+        setTimeout(() => {
+            setLoading('hidden')
+        }, 2000);
     },[])
     const handleCut = item =>{
         const have = shop.find(data=> data.id === item.id)
@@ -90,6 +95,9 @@ const Phones = () => {
             <ToastContainer />
         </>
     );
+};
+Phones.propTypes = {
+    setLoading: PropTypes.string,
 };
 
 export default Phones;

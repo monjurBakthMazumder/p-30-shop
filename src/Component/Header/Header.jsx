@@ -3,7 +3,7 @@ import { BiCartAdd } from 'react-icons/bi';
 import Item from '../Item/Item';
 const Header = ({shop,handleRemove, total , handleBuy}) => {
     return (
-        <div className="navbar shadow sticky top-0 bg-white z-50 px-5 md:px-[8%]">
+        <div className="navbar shadow sticky top-0 bg-white z-40 px-5 md:px-[8%]">
           <div>
             <a className="btn btn-ghost normal-case text-2xl">Fake Shope</a>
           </div>
